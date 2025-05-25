@@ -266,7 +266,7 @@ def check_relocation_status(user_id: int) -> str:
                 "fields": ["id", "status"]
             }
         )
-        print(matches_response)
+        # print(matches_response)
         matches_count = 0
         if matches_response and "data" in matches_response:
             matches_count = len(matches_response["data"])
@@ -283,11 +283,11 @@ def check_relocation_status(user_id: int) -> str:
         message += f"<b>Переселение:</b> {relocation_name.replace('<p>', '').replace('</p>', '')}\n"
         message += f"<b>Статус:</b> {status_text}\n"
         message += f"<b>Количество заявок на вашу комнату:</b> {matches_count}\n"
-        print(application_status)
-        print(
-            approved_match)
+        # print(application_status)
+        # print(
+        #     approved_match)
         if application_status == "ended" and approved_match:
-            print('123')
+            # print('123')
             match_id = approved_match.get("id")
             match_response = make_directus_request(
                 endpoint=f"/items/student_relocation_applications_match/{match_id}",
@@ -361,8 +361,8 @@ def check_relocation_status(user_id: int) -> str:
                             match_user_name = f"{first_name} {last_name}".strip() or "Неизвестный пользователь"
 
                     message += f"\n<b>Вы переселяетесь:</b>\n"
-                    message += f"Из: {from_accommodation_name}</a>\n"
-                    message += f"В: {to_accommodation_name}</a>\n"
+                    message += f"Из: {from_accommodation_name}\n"
+                    message += f"В: {to_accommodation_name}\n"
 
         return message
 

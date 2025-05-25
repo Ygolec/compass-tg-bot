@@ -77,6 +77,7 @@ def register_handlers(bot):
         logger.info(f"Relocation request from user {message.from_user.id}")
         try:
             status = check_relocation_status(message.from_user.id)
+            # print(status)
             bot.send_message(message.chat.id, status, parse_mode="HTML")
         except Exception as e:
             logger.error(f"Error processing relocation request: {e}")
